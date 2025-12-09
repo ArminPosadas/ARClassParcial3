@@ -6,7 +6,8 @@ const camera = new THREE.PerspectiveCamera(
     0.1,
     1000
 );
-camera.position.z = 3
+camera.position.z = 9
+camera.position.y = 2
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -19,37 +20,73 @@ const point = new THREE.PointLight(0xffffff, 1);
 point.position.set(2, 3, 2);
 scene.add(point);
 
+//CuboA
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 const cuboA = new THREE.Mesh(
     geometry,
     new THREE.MeshStandardMaterial({ color: 0xF4FF00 })
 );
-cuboA.position.x = -2;
+cuboA.position.x = -4;
 scene.add(cuboA);
-const geometryX = new THREE.BoxGeometry(2, 1, 1);
 
+//CuboB
+const geometryX = new THREE.BoxGeometry(2, 1, 1);
 const cuboB = new THREE.Mesh(
     geometryX,
     new THREE.MeshStandardMaterial({ color: 0xF4FF00 })
 );
 cuboB.position.x = 0;
 scene.add(cuboB);
-const geometryY = new THREE.BoxGeometry(1, 2, 1);
 
+//CuboC
+const geometryY = new THREE.BoxGeometry(1, 2, 1);
 const cuboC = new THREE.Mesh(
     geometryY,
     new THREE.MeshStandardMaterial({ color: 0xF4FF00 })
 );
-cuboC.position.x = 2;
+cuboC.position.x = 4;
 scene.add(cuboC);
+
+//CuboD
+const geometryZ = new THREE.BoxGeometry(1, 1, 2);
+const cuboD = new THREE.Mesh(
+    geometryZ,
+    new THREE.MeshStandardMaterial({ color: 0xF4FF00 })
+);
+cuboD.position.x = -4;
+cuboD.position.y = 4;
+scene.add(cuboD);
+
+//CuboE
+const geometryW = new THREE.BoxGeometry(2, 2, 1);
+const cuboE = new THREE.Mesh(
+    geometryW,
+    new THREE.MeshStandardMaterial({ color: 0xF4FF00 })
+);
+cuboE.position.x = 0;
+cuboE.position.y = 4;
+scene.add(cuboE);
+
+//CuboF
+const geometryV = new THREE.BoxGeometry(2, 1, 2);
+const cuboF = new THREE.Mesh(
+    geometryV,
+    new THREE.MeshStandardMaterial({ color: 0xF4FF00 })
+);
+cuboF.position.x = 4;
+cuboF.position.y = 4;
+scene.add(cuboF);
 
 let rotar = true;
 
-document.getElementById("cuboColor").addEventListener("change", (e) => {
+document.getElementById("cubeColor").addEventListener("change", (e) => {
     const colorHex = e.target.value;
     cuboA.material.color.set(colorHex);
     cuboB.material.color.set(colorHex);
     cuboC.material.color.set(colorHex);
+    cuboD.material.color.set(colorHex);
+    cuboE.material.color.set(colorHex);
+    cuboF.material.color.set(colorHex);
 });
 
 document.getElementById("pointLight").addEventListener("input", (e) => {
@@ -68,6 +105,9 @@ function animate() {
         cuboA.rotation.y += 0.01;
         cuboB.rotation.y += 0.01;
         cuboC.rotation.y += 0.01;
+        cuboD.rotation.y += 0.01;
+        cuboE.rotation.y += 0.01;
+        cuboF.rotation.y += 0.01;
     }
     renderer.render(scene, camera);
 }
