@@ -2,155 +2,59 @@
 <html lang="es">
     <head> 
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Modelo 3D con Cubos</title>
+        <meta name="primeraapp" content="width=device-width, initial-scale=1.0">
+        <title>modelo base</title>
         <style>
-            body {
-                margin: 0;
+            body{
+                margin:0;
                 overflow: hidden;
-                font-family: Arial, sans-serif;
+                font-family: Arial;
             }
-            #panel {
+            #Panel{
                 position: absolute;
                 top: 10px;
                 left: 10px;
-                padding: 15px;
-                background: rgba(30, 30, 30, 0.8);
+                padding: 10px;
+                background: rgba(rgb(255, 255, 255), rgb(0, 131, 0), rgb(255, 255, 255));
                 border-radius: 12px;
-                width: 220px;
-                color: white;
-                z-index: 100;
+                width: 200px;
+                color: rgb(255, 255, 255);
             }
-            #panel h3 {
-                margin-top: 0;
-                margin-bottom: 15px;
-                color: #4CAF50;
+            #Panel label{
+                font-size: 16px;
+                margin-top: 5;
             }
-            .cube-control {
-                margin-bottom: 15px;
-                padding-bottom: 15px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            }
-            .cube-control:last-child {
-                border-bottom: none;
-            }
-            #panel label {
-                display: block;
-                font-size: 14px;
-                margin-bottom: 5px;
-                color: #ccc;
-            }
-            #panel input[type="color"] {
-                width: 100%;
-                height: 30px;
-                margin-bottom: 10px;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-            }
-            #panel input[type="range"] {
+            #Panel input{
                 width: 100%;
                 margin-bottom: 10px;
             }
-            #panel button {
+            #Panel boton{
                 width: 100%;
-                padding: 8px;
                 margin-top: 5px;
-                background-color: #4CAF50;
-                color: white;
+                padding: 6;
                 border: none;
                 border-radius: 6px;
                 cursor: pointer;
-                font-weight: bold;
-            }
-            #panel button:hover {
-                background-color: #45a049;
-            }
-            #status {
-                margin-top: 10px;
-                padding: 5px;
-                background: rgba(0, 0, 0, 0.3);
-                border-radius: 4px;
-                font-size: 12px;
-                text-align: center;
             }
         </style>
     </head>
     <body>
-        <div id="panel">
-            <h3>Controles de Cubos</h3>
-            
-            <div class="cube-control">
-                <label>Cubo 1 (Rojo)</label>
-                <input type="color" id="cube1Color" value="#ff0000" />
-            </div>
-            
-            <div class="cube-control">
-                <label>Cubo 2 (Verde)</label>
-                <input type="color" id="cube2Color" value="#00ff00" />
-            </div>
-            
-            <div class="cube-control">
-                <label>Cubo 3 (Azul)</label>
-                <input type="color" id="cube3Color" value="#0000ff" />
-            </div>
-            
-            <div class="cube-control">
-                <label>Intensidad de Luz: <span id="lightValue">1.0</span></label>
-                <input type="range" id="pointLight" min="0" max="3" step="0.1" value="1" />
-            </div>
-            
-            <div class="cube-control">
-                <label>Rotación</label>
-                <button id="toggleRotation">Activar/Desactivar</button>
-            </div>
-            
-            <div id="status">Rotación: ACTIVADA</div>
+        <div id="Panel">
+            <label>Cube Colors</label>
+            <input type="color" id="cubeColor" value="FFFFFF" />
+
+            <label>Lights</label>
+            <input type="range" id="pointLight" min="0" max="3" step="0.1" value="1" />
+
+            <label>Animation</label>
+            <button id="rotate">Deactivate/Activate</button>
         </div>
 
-        <!-- Librerías de Three.js -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-        <!-- Librería GLTFLoader -->
-        <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-        <!-- Aplicación o escena de Three.js -->
-        <script src="NewModel.js"></script>
-        
-        <script>
-            // Controladores de interfaz
-            document.addEventListener('DOMContentLoaded', function() {
-                // Controles de color para cada cubo
-                document.getElementById('cube1Color').addEventListener('input', function(e) {
-                    window.app.setCubeColor(0, e.target.value);
-                });
-                
-                document.getElementById('cube2Color').addEventListener('input', function(e) {
-                    window.app.setCubeColor(1, e.target.value);
-                });
-                
-                document.getElementById('cube3Color').addEventListener('input', function(e) {
-                    window.app.setCubeColor(2, e.target.value);
-                });
-                
-                // Control de intensidad de luz
-                const lightSlider = document.getElementById('pointLight');
-                const lightValue = document.getElementById('lightValue');
-                
-                lightSlider.addEventListener('input', function(e) {
-                    const value = parseFloat(e.target.value);
-                    lightValue.textContent = value.toFixed(1);
-                    window.app.setLightIntensity(value);
-                });
-                
-                // Control de rotación
-                const toggleBtn = document.getElementById('toggleRotation');
-                const status = document.getElementById('status');
-                
-                toggleBtn.addEventListener('click', function() {
-                    const isActive = window.app.toggleRotation();
-                    status.textContent = 'Rotación: ' + (isActive ? 'ACTIVADA' : 'DESACTIVADA');
-                    toggleBtn.textContent = isActive ? 'Desactivar Rotación' : 'Activar Rotación';
-                });
-            });
-        </script>
+        <!--libreria de threejs-->
+        <script scr="js/three.min.js"></script>
+        <!--libreria gltfloader-->
+        <script src="js/GLFTLoader.js"></script>
+        <!--Aplicacion o escena de threejs-->
+        <script src="apps/NewModel.js"></script>
     </body>
 </html>
