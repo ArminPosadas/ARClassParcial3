@@ -4,8 +4,52 @@
         <meta charset="UTF-8">
         <meta name="primeraapp" content="width=device-width, initial-scale=1.0">
         <title>modelo base</title>
+        <style>
+            body{
+                margin:0;
+                overflow: hidden;
+                font-family: Arial;
+            }
+            #Panel{
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                padding: 10px;
+                background: rgba(rgb(255, 255, 255), rgb(0, 131, 0), rgb(255, 255, 255));
+                border-radius: 12px;
+                width: 200px;
+                color: rgb(255, 255, 255);
+            }
+            #Panel label{
+                font-size: 16px;
+                margin-top: 5;
+            }
+            #Panel input{
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            #Panel boton{
+                width: 100%;
+                margin-top: 5px;
+                padding: 6;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
+        <div id="Panel">
+            <label>Cube Colors</label>
+            <input type="color" id="cubeColor" value="FFFFFF" />
+
+            <label>Lights</label>
+            <input type="range" id="pointLight" min="0" max="3" step="0.1" value="1" />
+
+            <label>Animation</label>
+            <button id="rotate">Deactivate/Activate</button>
+        </div>
+
         <!--libreria de threejs-->
         <script scr="js/three.min.js"></script>
         <!--libreria gltfloader-->

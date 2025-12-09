@@ -1,14 +1,16 @@
 //declaramos escena
 const scene = new THREE.scene();
+scene.background = new THREE.Color(0x000000);
 //camara
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 5;
+camera.position.set(0, 2, 10);
 //declaracioon o llamado de rendering
 const renderer = new THREE.WebGLRenderer({ antialias: true});
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
-//luces 
+//luces
 //dentro de la declaracion asignamos el color de la luz y en intensidad se controla de 0 a 1 donde 0 es mino y 1 maximo
+const renderer = new THREE.WebGLRenderer({ antialias = true });
 const light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.set(1, 5, 1);
 scene.add(light);
