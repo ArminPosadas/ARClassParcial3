@@ -5,6 +5,10 @@ import { GLTFLoader } from 'js/GLTFLoader.js';
 let camera, scene, renderer, model;
 let controller;
 
+init();
+loadModel();
+animate();
+
 function init(){
 
     scene = new THREE.Scene();
@@ -67,6 +71,3 @@ function onWindowsResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-init();
-loadModel();
-animate();

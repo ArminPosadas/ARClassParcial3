@@ -1,11 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
-<head> 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewer" content="yes">
-</head>
-<body>
-    <script type="Module" src="apps/ar-first.js"></script>
-</body>
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>modelo base</title>
+        <style>
+            body{
+                margin:0;
+                overflow: hidden;
+                font-family: Arial;
+            }
+            #Panel{
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                padding: 10px;
+                background: rgba(rgb(255, 255, 255), rgb(0, 131, 0), rgb(255, 255, 255));
+                border-radius: 12px;
+                width: 200px;
+                color: rgb(255, 255, 255);
+            }
+            #Panel label{
+                font-size: 16px;
+                margin-top: 5;
+            }
+            #Panel input{
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            #Panel boton{
+                width: 100%;
+                margin-top: 5px;
+                padding: 6;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="Panel">
+            <label>Cube Colors</label>
+            <input type="color" id="cubeColor" value="FFFFFF" />
+
+            <label>Lights</label>
+            <input type="range" id="pointLight" min="0" max="3" step="0.1" value="1" />
+
+            <label>Animation</label>
+            <button id="rotate">Deactivate/Activate</button>
+
+            <label for="projects">Escoge un proyecto:</label>
+                <select name="projects" id="projects">
+                <option value="cube">Cubos</option>
+                <option value="park">Parque</option>
+                </select> 
+        </div>
+
+        <!--libreria de threejs-->
+        <script src="js/three.min.js"></script>
+        <!--libreria gltfloader-->
+        <script src="js/GLFTLoader.js"></script>
+        <!--Aplicacion o escena de threejs-->
+        <script src="apps/ar-first.js"></script>
+    </body>
 </html>
